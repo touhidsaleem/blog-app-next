@@ -1,57 +1,43 @@
-import React from "react";
-// import { StyleSheet, Text, TextInput } from "react-native";
+type Props = {
+  inputLabel: string;
+  placeholder: string;
+  value: any;
+  onchange: () => void;
+  readOnly: boolean;
+  multiLine: boolean;
+  inputCss: string;
+  iconCss: string;
+  inputWrapperCss: string;
+  icon: string;
+};
 
-export default function InputWithLabel(props: any) {
-    const {
-        inputLabel,
-        // labelStyle,
-        placeholder,
-        // textStyle,
-        autoComplete,
-        value,
-        onChangeText,
-        editable,
-        error,
-        multiLine,
-        inputCss
-    } = props;
-    return (
-        <>
-            <label>{inputLabel}</label>
-            <input
-                placeholder={placeholder}
-                // style={[styles.textInput, textStyle, error ? styles.error : null]}
-                editable={editable}
-                onChangeText={onChangeText}
-                value={value}
-                autoComplete={autoComplete}
-                selectionColor={error ? "red" : null}
-                multiLine={multiLine}
-                className={inputCss}
-                // textAlignVertical={multiLine ? "top" : "center"}
-                {...props}
-            />
-        </>
-    );
+export default function InputWithLabel({
+  inputLabel,
+  // labelStyle,
+  placeholder,
+  //   autoComplete,
+  value,
+  onchange,
+  readOnly,
+  inputCss,
+  iconCss,
+  inputWrapperCss,
+  icon,
+}: Props) {
+  return (
+    <>
+      <label>{inputLabel}</label>
+      <div className={inputWrapperCss}>
+        {icon && <span className={iconCss}>{icon}</span>}
+        <input
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onChange={onchange}
+          value={value}
+          className={`${inputCss} border border-secondary text-secondary w-full h-10 bg-white px-6 outline-none font-medium`}
+          //   {...props}
+        />
+      </div>
+    </>
+  );
 }
-
-// const styles = StyleSheet.create({
-//     error: {
-//         borderColor: "red",
-//     },
-//     label: {
-//         marginTop: 20,
-//         marginBottom: 5,
-//         color: "#888888",
-//         fontSize: 12,
-//     },
-//     textInput: {
-//         borderWidth: 1,
-//         borderColor: "#b1b1b1",
-//         borderRadius: 5,
-//         height: 50,
-//         width: "100%",
-//         padding: 10,
-//         color: "#212121",
-//     },
-// });
