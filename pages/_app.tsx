@@ -4,8 +4,12 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+type ComponentWithLayout = React.ComponentType & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+};
+
 export default function App({ Component, pageProps }: AppProps) {
-  const getLayout = Component.getLayout ? Component.getLayout : false;
+  const getLayout = (Component as ComponentWithLayout).getLayout || ((page: React.ReactNode) => page);
 
   return (
     <div

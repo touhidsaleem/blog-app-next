@@ -4,7 +4,7 @@ type Props = {
   disabled: boolean;
   btnLabel: string;
   btnCss: string;
-  icon: string;
+  icon: React.ReactNode;
   iconCss: string;
   onClick: () => void;
 };
