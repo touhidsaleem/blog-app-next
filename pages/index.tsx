@@ -5,10 +5,11 @@ import Tabs from "@/components/modules/Tabs";
 import { NextPage } from "next";
 import Link from "next/link";
 import { IoSearch } from "react-icons/io5";
+
 const Home: NextPage = () => {
   return (
     <div className="p-6 lg:p-0">
-      <div className="lg:mt-10 pb-6 lg:pb-10 lg:border-b border-secondary ">
+      <div className="lg:mt-4 pb-6 lg:border-b border-secondary ">
         <article className="text-custom-black text-2xl md:text-4xl lg:text-5xl font-bold leading-10">
           Insights from our team
         </article>
@@ -26,35 +27,137 @@ const Home: NextPage = () => {
           />
         </div>
       </div>
-      <div className="lg:my-10 lg:grid lg:grid-cols-12 gap-10">
+      <div className="lg:my-6 lg:grid lg:grid-cols-12 gap-10">
         {/* left panel */}
-        <div className="lg:col-span-4 hidden lg:block">
-          <div className="flex flex-col justify-center space-y-2 mx-auto w-max h-full">
-            <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
-              Blog Topics
-            </h4>
-            <Link href={"/"} className="text-custom-black text-sm font-medium ">
-              Company
-            </Link>
-            <Link href={"/"} className="text-custom-black text-sm font-medium ">
-              Design
-            </Link>
-            <Link href={"/"} className="text-custom-black text-sm font-medium ">
-              Technology
-            </Link>
-            <Link href={"/"} className="text-custom-black text-sm font-medium ">
-              Crypto
-            </Link>
-            <Link href={"/"} className="text-custom-black text-sm font-medium ">
-              Artificial Intelligence
-            </Link>
-            <Link href={"/"} className="text-custom-black text-sm font-medium ">
-              Work
-            </Link>
+        <div className="lg:col-span-4 hidden lg:block overflow-y-auto no-scrollbar lg:h-[25rem] ">
+          <div className="space-y-6 h-full">
+            <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
+              <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
+                Blog Topics
+              </h4>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Company
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Design
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Technology
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Crypto
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Artificial Intelligence
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Work
+              </Link>
+            </div>
+            <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
+              <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
+                Blog Topics
+              </h4>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Company
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Design
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Technology
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Crypto
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Artificial Intelligence
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Work
+              </Link>
+            </div>
+            <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
+              <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
+                Blog Topics
+              </h4>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Company
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Design
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Technology
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Crypto
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Artificial Intelligence
+              </Link>
+              <Link
+                href={"/"}
+                className="text-custom-black text-sm font-medium "
+              >
+                Work
+              </Link>
+            </div>
           </div>
         </div>
         {/* right panel */}
-        <div className=" lg:col-span-8 ">
+        <div className=" lg:col-span-8">
           <div className="relative">
             <div className="border-b border-secondary  w-full absolute top-[50%] lg:border-0" />
             <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max pr-2 px-3 relative">
@@ -62,12 +165,23 @@ const Home: NextPage = () => {
             </h4>
           </div>
           <div className="my-4 flex space-x-6 overflow-x-auto no-scrollbar">
-            {new Array(10).fill(null).map((_, i) => (
-              <Tabs key={i} label="Technology" />
-            ))}
+            {/* {new Array(10).fill(null).map((_, i) => ( */}
+            <Tabs label="Design Thinking" />
+            <Tabs label="Technology" active />
+            <Tabs label="Web3" />
+            <Tabs label="Programming" />
+            <Tabs label="Ai" />
+            {/* ))} */}
           </div>
-          <div className="lg:mt-14">
-            <BlogCard />
+          <div className="lg:mt-10  lg:overflow-y-auto lg:h-[18rem] mb-10 lg:mb-0 lg:pr-6">
+            {new Array(5).fill(null).map((_, i) => (
+              <>
+                <BlogCard />
+                {i + 1 != 5 && (
+                  <div className="w-full border border-secondary my-6 opacity-[30%]" />
+                )}
+              </>
+            ))}
           </div>
         </div>
       </div>

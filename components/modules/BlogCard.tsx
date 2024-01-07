@@ -24,7 +24,7 @@ const BlogCard = () => {
           <h6 className="text-primary-dark">7 min read</h6>
         </div>
       </div>
-      <div className=" w-full flex-[0.4]">
+      <div className=" w-full flex-[0.4] ">
         <Image
           src={tempImg}
           alt="Article Image"
