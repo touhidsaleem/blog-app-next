@@ -4,14 +4,18 @@ import BlogCard from "@/components/modules/BlogCard";
 import Tabs from "@/components/modules/Tabs";
 import { NextPage } from "next";
 import Link from "next/link";
-import { ReactNode } from "react";
+import React from "react";
 // import { IoSearch } from "react-icons/io5";
 
-type CustomPage = NextPage & {
-  getLayout?: (page: ReactNode) => ReactNode;
-};
+interface GetLayoutFunction {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+}
 
-const Home: CustomPage = () => {
+type HomeProps = NextPage & GetLayoutFunction;
+
+const Home: HomeProps = () => {
+  console.log(process.env.NEXT_PUBLIC_APPLICATION_API_URL);
+
   return (
     <div className="p-6 lg:p-0">
       <div className="lg:mt-4 pb-6 lg:border-b border-secondary ">
@@ -26,22 +30,15 @@ const Home: CustomPage = () => {
           <InputWithLabel
             placeholder="Search..."
             inputWrapperCss="relative mt-8 lg:mt-0 w-full lg:w-96"
-            inputCss="rounded-3xl pl-10"
+            inputCss=" rounded-3xl pl-10 "
             icon={''}
-            // icon={<IoSearch color="#888888" size="16px" />}
-            iconCss="absolute top-[30%] left-5"
-            inputLabel=""
-            value=""
-            onchange={() => { }}
-            readOnly={false}
-            multiLine={false} // Ensure it matches the prop name in Props
-          />
-
+            // icon={<IoSearch color="#888888" sixe="16px" />}
+            iconCss=" absolute top-[30%] left-5" inputLabel={""} value={undefined} onchange={() => { }} readOnly={false} multiLine={false} />
         </div>
       </div>
       <div className="lg:my-6 lg:grid lg:grid-cols-12 gap-10">
         {/* left panel */}
-        <div className="lg:col-span-4 hidden lg:block overflow-y-auto no-scrollbar lg:h-[25rem] ">
+        <div className="lg:col-span-4 hidden lg:block overflow-y-auto no-scrollbar lg:h-[27rem] ">
           <div className="space-y-6 h-full">
             <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
               <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
@@ -185,7 +182,7 @@ const Home: CustomPage = () => {
             <Tabs label="Ai" css={""} active={false} />
             {/* ))} */}
           </div>
-          <div className="lg:mt-10  lg:overflow-y-auto lg:h-[18rem] mb-10 lg:mb-0 lg:pr-6">
+          <div className="lg:mt-10 lg:overflow-y-auto lg:h-[20rem] mb-10 lg:mb-0 lg:pr-6">
             {new Array(5).fill(null).map((_, i) => (
               <>
                 <BlogCard />
@@ -201,7 +198,7 @@ const Home: CustomPage = () => {
   );
 };
 
-Home.getLayout = function getLayout(page: ReactNode) {
+Home.getLayout = function getLayout(page: React.ReactNode) {
   return <DefaultLayout>{page}</DefaultLayout>;
 };
 

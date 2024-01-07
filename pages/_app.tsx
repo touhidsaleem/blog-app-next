@@ -5,8 +5,12 @@ import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
+type ComponentWithLayout = React.ComponentType & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+};
+
 export default function App({ Component, pageProps }: AppProps) {
-  const getLayout = (Component as any).getLayout || null;
+  const getLayout = (Component as ComponentWithLayout).getLayout || ((page: React.ReactNode) => page);
 
   const content = (
     <div className={`${inter.className} bg-[#FAF9F6] w-full h-full lg:h-screen lg:overflow-hidden`}>

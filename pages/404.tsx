@@ -18,7 +18,7 @@ const Custom404 = () => {
         <Button
           btnLabel="Go Home"
           onClick={() => router.push("/")}
-          btnCss="mt-6 text-xs lg:text-sm" disabled={false} icon={''} iconCss={""} />
+          btnCss="mt-6 text-xs lg:text-sm" disabled={false} icon={undefined} iconCss={""} />
       </div>
     </div>
   );
