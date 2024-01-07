@@ -1,21 +1,24 @@
+
+import React from "react";
+
 type Props = {
   inputLabel: string;
   placeholder: string;
   value: any;
   onchange: () => void;
   readOnly: boolean;
-  multiLine: boolean;
+  multiLine: boolean; // This might be the problem
   inputCss: string;
   iconCss: string;
   inputWrapperCss: string;
-  icon: string;
+  icon: React.ReactNode;
 };
+
+
 
 export default function InputWithLabel({
   inputLabel,
-  // labelStyle,
   placeholder,
-  //   autoComplete,
   value,
   onchange,
   readOnly,
@@ -35,7 +38,7 @@ export default function InputWithLabel({
           onChange={onchange}
           value={value}
           className={`${inputCss} border border-secondary text-secondary w-full h-10 bg-white px-6 outline-none font-medium`}
-          //   {...props}
+        //   {...props}
         />
       </div>
     </>

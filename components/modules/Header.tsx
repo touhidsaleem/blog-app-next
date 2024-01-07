@@ -22,11 +22,9 @@ const Header = () => {
 
   return (
     <nav
-      className={`${
-        inter.className
-      } flex justify-between items-center p-6 xl:p-0 xl:py-6 bg-[#FAF9F6] sticky top-0 ${
-        stickyNav && "shadow-lg"
-      }`}
+      className={`${inter.className
+        } flex justify-between items-center p-6 xl:p-0 xl:py-6 bg-[#FAF9F6] sticky top-0 ${stickyNav && "shadow-lg"
+        }`}
       style={{ zIndex: 999 }}
     >
       <Link href={"/"} className="flex justify-center items-center">
@@ -59,8 +57,7 @@ const Header = () => {
         </div>
         <Button
           btnLabel="Get Started"
-          icon={<FaArrowRight color="#FFF" sixe="16px" />}
-        />
+          icon={<FaArrowRight color="#FFF" sixe="16px" />} disabled={false} btnCss={""} iconCss={""} onClick={() => { }} />
       </div>
     </nav>
   );

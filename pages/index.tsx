@@ -4,9 +4,14 @@ import BlogCard from "@/components/modules/BlogCard";
 import Tabs from "@/components/modules/Tabs";
 import { NextPage } from "next";
 import Link from "next/link";
-import { IoSearch } from "react-icons/io5";
+import { ReactNode } from "react";
+// import { IoSearch } from "react-icons/io5";
 
-const Home: NextPage = () => {
+type CustomPage = NextPage & {
+  getLayout?: (page: ReactNode) => ReactNode;
+};
+
+const Home: CustomPage = () => {
   return (
     <div className="p-6 lg:p-0">
       <div className="lg:mt-4 pb-6 lg:border-b border-secondary ">
@@ -21,10 +26,17 @@ const Home: NextPage = () => {
           <InputWithLabel
             placeholder="Search..."
             inputWrapperCss="relative mt-8 lg:mt-0 w-full lg:w-96"
-            inputCss=" rounded-3xl pl-10 "
-            icon={<IoSearch color="#888888" sixe="16px" />}
-            iconCss=" absolute top-[30%] left-5"
+            inputCss="rounded-3xl pl-10"
+            icon={''}
+            // icon={<IoSearch color="#888888" size="16px" />}
+            iconCss="absolute top-[30%] left-5"
+            inputLabel=""
+            value=""
+            onchange={() => { }}
+            readOnly={false}
+            multiLine={false} // Ensure it matches the prop name in Props
           />
+
         </div>
       </div>
       <div className="lg:my-6 lg:grid lg:grid-cols-12 gap-10">
@@ -166,11 +178,11 @@ const Home: NextPage = () => {
           </div>
           <div className="my-4 flex space-x-6 overflow-x-auto no-scrollbar">
             {/* {new Array(10).fill(null).map((_, i) => ( */}
-            <Tabs label="Design Thinking" />
-            <Tabs label="Technology" active />
-            <Tabs label="Web3" />
-            <Tabs label="Programming" />
-            <Tabs label="Ai" />
+            <Tabs label="Design Thinking" css={""} active={false} />
+            <Tabs label="Technology" active css={""} />
+            <Tabs label="Web3" css={""} active={false} />
+            <Tabs label="Programming" css={""} active={false} />
+            <Tabs label="Ai" css={""} active={false} />
             {/* ))} */}
           </div>
           <div className="lg:mt-10  lg:overflow-y-auto lg:h-[18rem] mb-10 lg:mb-0 lg:pr-6">
@@ -189,7 +201,8 @@ const Home: NextPage = () => {
   );
 };
 
-Home.getLayout = function getLayout(page) {
+Home.getLayout = function getLayout(page: ReactNode) {
   return <DefaultLayout>{page}</DefaultLayout>;
 };
+
 export default Home;

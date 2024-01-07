@@ -4,7 +4,7 @@ type Props = {
   disabled: boolean;
   btnLabel: string;
   btnCss: string;
-  icon: string;
+  icon: React.ReactNode;
   iconCss: string;
   onClick: () => void;
 };
@@ -21,7 +21,7 @@ const Button = ({
     <button
       disabled={disabled}
       className={`${btnCss} rounded flex justify-center items-center bg-primary-dark px-4 py-2 text-custom-white text-sm font-semibold`}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {btnLabel}
       {icon && (
