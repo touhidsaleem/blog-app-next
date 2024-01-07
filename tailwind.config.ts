@@ -15,7 +15,10 @@ const config: Config = {
       },
       colors : {
         primary: '#3D74FF',
-        "primary-dark": '#1C5CFF'
+        "primary-dark": '#1C5CFF',
+        secondary: '#969696',
+        'custom-black': '#1E1E1E',
+        'custom-white':'#FCFCFC'
       }
     },
   },
