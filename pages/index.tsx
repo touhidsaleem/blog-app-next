@@ -5,7 +5,7 @@ import Tabs from "@/components/modules/Tabs";
 import { NextPage } from "next";
 import Link from "next/link";
 import React from "react";
-// import { IoSearch } from "react-icons/io5";
+import { IoSearch } from "react-icons/io5";
 
 interface GetLayoutFunction {
   getLayout?: (page: React.ReactNode) => React.ReactNode;
@@ -31,14 +31,14 @@ const Home: HomeProps = () => {
             placeholder="Search..."
             inputWrapperCss="relative mt-8 lg:mt-0 w-full lg:w-96"
             inputCss=" rounded-3xl pl-10 "
-            icon={''}
-            // icon={<IoSearch color="#888888" sixe="16px" />}
+            // icon={''}
+            icon={<IoSearch color="#888888" sixe="16px" />}
             iconCss=" absolute top-[30%] left-5" inputLabel={""} value={undefined} onchange={() => { }} readOnly={false} multiLine={false} />
         </div>
       </div>
       <div className="lg:my-6 lg:grid lg:grid-cols-12 gap-10">
         {/* left panel */}
-        <div className="lg:col-span-4 hidden lg:block overflow-y-auto no-scrollbar lg:h-[27rem] ">
+        <div className="lg:col-span-4 hidden lg:block overflow-y-auto no-scrollbar lg:h-[55vh] ">
           <div className="space-y-6 h-full">
             <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
               <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
@@ -182,7 +182,7 @@ const Home: HomeProps = () => {
             <Tabs label="Ai" css={""} active={false} />
             {/* ))} */}
           </div>
-          <div className="lg:mt-10 lg:overflow-y-auto lg:h-[20rem] mb-10 lg:mb-0 lg:pr-6">
+          <div className="lg:mt-10 lg:overflow-y-auto lg:h-[38vh] mb-10 lg:mb-0 lg:pr-6">
             {new Array(5).fill(null).map((_, i) => (
               <>
                 <BlogCard />

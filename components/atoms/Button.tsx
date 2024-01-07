@@ -20,12 +20,12 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      className={`${btnCss} rounded flex justify-center items-center bg-primary-dark px-4 py-2 text-custom-white text-sm font-semibold`}
+      className={`${btnCss} rounded flex justify-center items-center bg-primary-dark px-3 py-2 text-custom-white text-xs font-semibold`}
       onClick={onClick}
     >
       {btnLabel}
       {icon && (
-        <span className={`${iconCss} bg-primary p-2 ml-3 rounded-sm`}>
+        <span className={`${iconCss} bg-primary p-1 ml-3 rounded-sm`}>
           {icon}
         </span>
       )}
