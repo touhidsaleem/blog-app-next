@@ -18,7 +18,7 @@ const BlogCard = () => {
           work...
         </article>
         <div className="flex items-center space-x-6">
-          <Tabs label="Tools" css="w-max" />
+          <Tabs label="Tools" css="w-max" active={false} />
           <h6 className="text-secondary text-sm font-normal">By Mark Tuchel</h6>
           <div className="w-2 h-2 bg-neutral-500 rounded-full" />
           <h6 className="text-primary-dark">7 min read</h6>
