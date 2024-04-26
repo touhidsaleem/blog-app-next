@@ -12,7 +12,6 @@ type Props = {
 
 const MobileSidebar = ({ sidebar, handleClose }: Props) => {
   const router = useRouter()
-  console.log(router);
 
 
   const backgroundHidden = () => {

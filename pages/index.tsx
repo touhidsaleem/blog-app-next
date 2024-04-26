@@ -1,10 +1,14 @@
 import InputWithLabel from "@/components/atoms/InputWithLabel";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import BlogCard from "@/components/modules/BlogCard";
+import Loader from "@/components/modules/Loader";
 import Tabs from "@/components/modules/Tabs";
+import { getArticlesByCategory } from "@/query/artliclesQuery";
+import { getAllCategories } from "@/query/categoriesQuery";
 import { NextPage } from "next";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { Suspense, useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
 interface GetLayoutFunction {
@@ -14,7 +18,36 @@ interface GetLayoutFunction {
 type HomeProps = NextPage & GetLayoutFunction;
 
 const Home: HomeProps = () => {
-  console.log(process.env.NEXT_PUBLIC_APPLICATION_API_URL);
+
+  const [articles, setArticles] = useState([])
+  const [categories, setCategories] = useState([])
+  const [selectedTab, setSelectedTab] = useState('')
+  const [test, setTest] = useState('')
+
+  const router = useRouter()
+
+  const getArticles = async (category: string) => {
+    const result = await getArticlesByCategory(category)
+    // console.log('result', result);
+    setArticles(result?.data)
+  }
+  const getCategories = async () => {
+    const result = await getAllCategories()
+    setCategories(result?.data)
+    getArticles(result?.data[0].name)
+    setSelectedTab(result?.data[0].name)
+  }
+
+  useEffect(() => {
+    getCategories()
+  }, [])
+
+
+  function handleTabClick(category: string) {
+    getArticles(category)
+    setSelectedTab(category)
+  }
+
 
   return (
     <div className="p-6 lg:p-0">
@@ -22,6 +55,15 @@ const Home: HomeProps = () => {
         <article className="text-custom-black text-2xl md:text-4xl lg:text-5xl font-bold leading-10">
           Insights from our team
         </article>
+        <input type='file' onChange={(e) => {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onloadend = function () {
+            console.log('=======>', reader.result);
+          }
+
+        }} />
         <div className="md:mt-2 lg:mt-4 flex flex-col lg:flex-row justify-start lg:justify-between lg:items-center">
           <article className="text-secondary text-sm md:text-base font-medium  leading-tight lg:leading-none">
             Powerful Trading Tools and Features for Experienced Investors
@@ -36,6 +78,7 @@ const Home: HomeProps = () => {
             iconCss=" absolute top-[30%] left-5" inputLabel={""} value={undefined} onchange={() => { }} readOnly={false} multiLine={false} />
         </div>
       </div>
+      {/* <div className="lg:my-6"> */}
       <div className="lg:my-6 lg:grid lg:grid-cols-12 gap-10">
         {/* left panel */}
         <div className="lg:col-span-4 hidden lg:block overflow-y-auto no-scrollbar lg:h-[55vh] ">
@@ -81,116 +124,36 @@ const Home: HomeProps = () => {
                 Work
               </Link>
             </div>
-            <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
-              <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
-                Blog Topics
-              </h4>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Company
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Design
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Technology
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Crypto
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Artificial Intelligence
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Work
-              </Link>
-            </div>
-            <div className="flex flex-col justify-start space-y-2 mx-auto w-max">
-              <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max mb-4">
-                Blog Topics
-              </h4>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Company
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Design
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Technology
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Crypto
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Artificial Intelligence
-              </Link>
-              <Link
-                href={"/"}
-                className="text-custom-black text-sm font-medium "
-              >
-                Work
-              </Link>
-            </div>
           </div>
         </div>
         {/* right panel */}
-        <div className=" lg:col-span-8">
+        <div className=" lg:col-span-8 overflow-y-auto no-scrollbar">
+          {/* <div className=" "> */}
           <div className="relative">
             <div className="border-b border-secondary  w-full absolute top-[50%] lg:border-0" />
-            <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max pr-2 px-3 relative">
+            <h4 className="text-base font-medium text-primary-dark bg-[#FAF9F6] w-max pr-2 relative">
               Trending Topics
             </h4>
           </div>
           <div className="my-4 flex space-x-6 overflow-x-auto no-scrollbar">
-            {/* {new Array(10).fill(null).map((_, i) => ( */}
-            <Tabs label="Design Thinking" css={""} active={false} />
-            <Tabs label="Technology" active css={""} />
-            <Tabs label="Web3" css={""} active={false} />
-            <Tabs label="Programming" css={""} active={false} />
-            <Tabs label="Ai" css={""} active={false} />
-            {/* ))} */}
+            {categories?.length && categories?.map((data: object, idx: number) => (
+              <Tabs key={idx} label={data?.name} css={""} active={data?.name == selectedTab} onTabClick={(category: string) => handleTabClick(category)} />
+            ))}
           </div>
-          <div className="lg:mt-10 lg:overflow-y-auto lg:h-[38vh] mb-10 lg:mb-0 lg:pr-6">
-            {new Array(5).fill(null).map((_, i) => (
-              <>
-                <BlogCard />
-                {i + 1 != 5 && (
+          <div className=" lg:mt-4">
+            {/* <div className="lg:mt-10 lg:overflow-y-auto lg:h-[38vh] mb-10 lg:mb-0 lg:pr-6"> */}
+            {(articles ?? [])?.length ? articles?.map((data, idx) => (
+              <div key={idx} onClick={() =>
+                router.push(
+                  `/blog/${data?.title?.toLowerCase()?.split(' ')?.join('-')}${data?._id}`,
+                )
+              }>
+                <BlogCard data={data} />
+                {idx + 1 != articles?.length && (
                   <div className="w-full border border-secondary my-6 opacity-[30%]" />
                 )}
-              </>
-            ))}
+              </div>
+            )) : null}
           </div>
         </div>
       </div>
