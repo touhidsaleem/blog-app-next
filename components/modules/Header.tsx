@@ -41,7 +41,7 @@ const Header = () => {
             <div className="w-8 h-8 z-1 bg-primary-dark rounded-full relative">
               <div className="w-5 h-5 bg-primary absolute rounded-full top-0 left-[20%] z-10" />
             </div>
-            <h1 className="text-stone-900 text-2xl font-bold ml-2">Coranu</h1>
+            <h1 className="text-stone-900 text-2xl font-bold ml-2">PenSpace</h1>
           </Link>
           {/* Mv  hamburger icon */}
           <CgMenuRight

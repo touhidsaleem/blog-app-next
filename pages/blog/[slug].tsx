@@ -16,7 +16,7 @@ const Slug = () => {
         if (result?.success) {
             setArticle(result?.data)
         } else {
-            alert(result?.error)
+            console.log('error while getArticlesById',result?.error)
         }
     }
 
@@ -24,6 +24,7 @@ const Slug = () => {
         const slugArray = router?.query?.slug?.split(('-'))
         if (slugArray?.length) {
             const id = slugArray[slugArray?.length - 1]
+            console.log({id})
             getArticle(id)
         }
     }, [router?.isReady])
@@ -34,8 +35,11 @@ const Slug = () => {
             <div>
 
             </div>
-            <div className="w-full h-40 overflow-hidden ">
-                <Image src={article?.photo} alt={'Article Image'} width={500} height={500} className="object-cover" />
+            <div className="w-full h-40 overflow-hidden">
+                <Image 
+                src={'https://unsplash.com/photos/looking-up-at-a-group-of-tall-trees-hMgFCMx3Rrs'}
+                // src={'https://unsplash.com/photos/looking-up-at-a-group-of-tall-trees-hMgFCMx3Rrs' ||article?.photo}
+                 alt={'Article Image'} width={100} height={100} className="object-cover" />
             </div>
             <article>{article?.desc}</article>
         </div>

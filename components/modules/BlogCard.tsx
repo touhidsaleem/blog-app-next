@@ -24,7 +24,7 @@ const BlogCard = ({ data }: any) => {
   return (
     <div className=" select-none cursor-pointer">
       <h6 className="text-secondary text-xs md:text-sm font-light ">{formattedDateString}</h6>
-      <div className="flex justify-between w-full h-20 lg:h-auto overflow-hidden my-2">
+      <div className="flex justify-between w-full lg:h-auto overflow-hidden my-2">
         <div className="flex-[0.6]  pr-0 lg:pr-4 relative">
           <h3 className="text-custom-black text-sm md:text-base lg:text-xl font-bold">
             {data?.title}
@@ -35,10 +35,10 @@ const BlogCard = ({ data }: any) => {
 
         </div>
 
-        <div className="flex-[0.2] min-w-20 h-20   lg:min-w-32 lg:h-32 ">
+        <div className="flex-[0.2] min-w-20 h-[100%]   lg:min-w-32 lg:h-32 ">
           <Image
-            // src={tempImg}
-            src={data?.photo || tempImg}
+            src={tempImg}
+            // src={data?.photo || tempImg}
             alt="Article Image"
             width={500}
             height={500}

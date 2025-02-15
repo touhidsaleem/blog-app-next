@@ -34,8 +34,8 @@ const Home: HomeProps = () => {
   const getCategories = async () => {
     const result = await getAllCategories()
     setCategories(result?.data)
-    getArticles(result?.data[0].name)
-    setSelectedTab(result?.data[0].name)
+    getArticles(result?.data?.length && result?.data[0].name)
+    setSelectedTab(result?.data?.length && result?.data[0].name)
   }
 
   useEffect(() => {
@@ -55,15 +55,14 @@ const Home: HomeProps = () => {
         <article className="text-custom-black text-2xl md:text-4xl lg:text-5xl font-bold leading-10">
           Insights from our team
         </article>
-        <input type='file' onChange={(e) => {
+        {/* <input type='file' onChange={(e) => {
           const file = e.target.files[0];
           const reader = new FileReader();
           reader.readAsDataURL(file);
           reader.onloadend = function () {
             console.log('=======>', reader.result);
           }
-
-        }} />
+        }} /> */}
         <div className="md:mt-2 lg:mt-4 flex flex-col lg:flex-row justify-start lg:justify-between lg:items-center">
           <article className="text-secondary text-sm md:text-base font-medium  leading-tight lg:leading-none">
             Powerful Trading Tools and Features for Experienced Investors
@@ -145,7 +144,7 @@ const Home: HomeProps = () => {
             {(articles ?? [])?.length ? articles?.map((data, idx) => (
               <div key={idx} onClick={() =>
                 router.push(
-                  `/blog/${data?.title?.toLowerCase()?.split(' ')?.join('-')}${data?._id}`,
+                  `/blog/${data?.title?.toLowerCase()?.split(' ')?.join('-')}-${data?._id}`,
                 )
               }>
                 <BlogCard data={data} />
