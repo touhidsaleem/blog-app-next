@@ -44,24 +44,3 @@ export const makeApiPutCall = async ({
   });
   return response;
 };
-
-export const makeApiPatchCall = async ({
-  url,
-  headers = {},
-  queryParams = {},
-  body = {},
-}: ApiCallOptions): Promise<AxiosResponse> => {
-  const response = await axios.patch(url, body, {
-    headers,
-    params: queryParams,
-  });
-  return response;
-};
-
-// export const getError = (error: any) =>
-//   error?.meta?.displayMessage ||
-//   error?.meta?.message ||
-//   error?.response?.data?.meta?.displayMessage ||
-//   error?.response?.data?.meta?.message ||
-//   error?.displayMessage ||
-//   error?.message;
